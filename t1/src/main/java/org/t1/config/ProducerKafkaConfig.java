@@ -21,8 +21,6 @@ import java.util.Map;
 
 @Configuration
 public class ProducerKafkaConfig {
-    @Value("${t1.kafka.topic.user_id_registered}")
-    private String userTopic;
     @Value("${t1.kafka.bootstrap.server}")
     private String servers;
 
@@ -32,20 +30,6 @@ public class ProducerKafkaConfig {
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         props.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, false);
         return props;
-    }
-
-    @Bean
-    @ConditionalOnProperty(value = "t1.kafka.producer.enable", havingValue = "true", matchIfMissing = true)
-    public KafkaUserProducer producerUser(@Qualifier("user") KafkaTemplate<String, UserDto> template) {
-        template.setDefaultTopic(userTopic);
-        return new KafkaUserProducer(template);
-    }
-
-    @Bean
-    @ConditionalOnProperty(value = "t1.kafka.producer.enable", havingValue = "true", matchIfMissing = true)
-    public KafkaUserIdProducer producerUserId(@Qualifier("userId") KafkaTemplate<String, Long> template) {
-        template.setDefaultTopic(userTopic);
-        return new KafkaUserIdProducer(template);
     }
 
     @Bean("user")
