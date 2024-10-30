@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: t1
+  datasource:
+    url: jdbc:postgresql://localhost:5432/
+    username: postgres
+    password: "0000"
+    driverClassName: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+t1:
+  kafka:
+    bootstrap:
+      server: localhost:9092
+    consumer:
+      group-id: t1-demo
+      max.poll.records: 10
+    producer:
+      enable: true
+    topic:
+      user_registration: t1_demo_user_registration
+      user_id_registered: t1_demo_user_registered
+    listener:
+      poll-timeout: 1000
