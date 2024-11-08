@@ -2,11 +2,10 @@ package t1.tests;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
+import t1.tests.testContainer.TestContainersConfiguration;
 
-@Import(TestcontainersConfiguration.class)
 @SpringBootTest
-class TestsApplicationTests {
+class ApplicationTest extends TestContainersConfiguration {
 
 	@Test
 	void contextLoads() {

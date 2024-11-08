@@ -1,0 +1,15 @@
+app:
+  db:
+    url: jdbc:postgresql://localhost:5432/testdb
+    username: postgres
+    password: 0
+    ddl-auto: create-drop
+    driver: org.postgresql.Driver
+    dialect: org.hibernate.dialect.PostgreSQLDialect
+
+external:
+  api:
+    base-url: http://localhost:8031
+
+server:
+  port: 8082
